@@ -12,6 +12,9 @@
 body {
   font-family: "Inconsolata", monospace;
   color: #0d1e2d;
+  margin: 0;
+  padding: 0;
+  width: 100%;
 }
 
 a {
@@ -35,6 +38,7 @@ h6,
 
 .section {
   padding: 7rem 0;
+  text-align: center;
 }
 
 .filters a {
@@ -77,8 +81,10 @@ h6,
 }
 
 .item {
-  border: none;
-  margin-bottom: 30px;
+  display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 
 .item .item-wrap {
@@ -184,7 +190,7 @@ h6,
 }
 
 .readmore {
-  display: inline-block;
+  display: none;
   border: 1px solid #000;
   padding: 10px 15px;
   font-size: 12px;
@@ -334,139 +340,36 @@ h6,
 /*--------------------------------------------------------------
 # Header
 --------------------------------------------------------------*/
-/* Custom Navmenu */
-.custom-navmenu {
-  background: #0d1e2d;
-}
 
-.custom-navmenu .custom-menu,
-.custom-navmenu .custom-menu li {
-  padding: 0;
-  margin: 0;
-  list-style: none;
-}
-
-.custom-navmenu .custom-menu li {
-  margin-bottom: 0;
-  font-size: 20px;
-}
-
-.custom-navmenu .custom-menu li a {
-  color: #fff;
-  padding: 10px 0 !important;
-}
-
-.custom-navmenu .custom-menu li a:hover {
-  text-decoration: none;
-}
-
-.custom-navmenu .custom-menu li.active a {
-  text-decoration: underline;
-}
-
-.custom-navmenu h3 {
-  font-size: 20px;
-  color: #fff;
-}
-
-.custom-navmenu p {
-  color: rgba(255, 255, 255, 0.6);
-}
-
-.custom-navmenu a {
-  color: rgba(255, 255, 255, 0.7);
-}
-
-.custom-navmenu a:hover {
-  color: #fff;
-}
-
-/* Custom Navbar */
+/*--------------------------------------------------------------
+# Navbar - Static at Top with Only "About Me"
+--------------------------------------------------------------*/
 .custom-navbar {
-  padding-top: 50px;
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
+  background: rgb(245, 245, 245); /* Keeps it visible */
+  padding: 15px 20px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow */
+  z-index: 1000; /* Ensures it stays on top */
+  text-align: left;
 }
 
-@media (max-width: 780px) {
-  .custom-navbar>.container {
-    padding-right: 0;
-    padding-left: 0;
-  }
+.navbar-brand {
+  font-size: 20px;
+  font-weight: bold;
+  color: black; /* Ensures text is visible */
+  text-transform: uppercase;
+  text-decoration: none; /* Removes underline */
 }
 
-.custom-navbar .navbar-brand {
-  font-size: 1.7rem;
+.navbar-brand:hover {
+  color: #777; /* Slight hover effect */
 }
 
-/* Burger */
-.burger {
-  width: 28px;
-  height: 32px;
-  cursor: pointer;
-  position: relative;
-}
 
-.burger:before,
-.burger span,
-.burger:after {
-  width: 100%;
-  height: 2px;
-  display: block;
-  background: #000;
-  border-radius: 2px;
-  position: absolute;
-  opacity: 1;
-}
 
-.burger:before,
-.burger:after {
-  transition: top 0.35s cubic-bezier(0.23, 1, 0.32, 1), transform 0.35s cubic-bezier(0.23, 1, 0.32, 1), opacity 0.35s cubic-bezier(0.23, 1, 0.32, 1), background-color 1.15s cubic-bezier(0.86, 0, 0.07, 1);
-  -webkit-transition: top 0.35s cubic-bezier(0.23, 1, 0.32, 1), -webkit-transform 0.35s cubic-bezier(0.23, 1, 0.32, 1), opacity 0.35s cubic-bezier(0.23, 1, 0.32, 1), background-color 1.15s cubic-bezier(0.86, 0, 0.07, 1);
-  content: "";
-}
-
-.burger:before {
-  top: 4px;
-}
-
-.burger span {
-  top: 15px;
-}
-
-.burger:after {
-  top: 26px;
-}
-
-/* Hover */
-.burger:hover:before {
-  top: 7px;
-}
-
-.burger:hover:after {
-  top: 23px;
-}
-
-/* Click */
-.burger.active span {
-  opacity: 0;
-}
-
-.burger.active:before,
-.burger.active:after {
-  top: 40%;
-}
-
-.burger.active:before {
-  transform: rotate(45deg);
-}
-
-.burger.active:after {
-  transform: rotate(-45deg);
-}
-
-.burger:focus {
-  outline: none;
-}
 
 /*--------------------------------------------------------------
 # Footer
@@ -475,29 +378,112 @@ h6,
   padding: 0 0 4rem 0;
 }
 
-.footer a {
-  color: #000;
+/* Ensure the social container is fixed */
+.social {
+  position: fixed;
+  bottom: 20px; /* Moves it to the bottom */
+  right: 20px; /* Moves it to the right */
+  z-index: 1000; /* Keeps it above other content */
 }
 
+/* LinkedIn Logo Styling */
 .social a {
-  display: inline-block;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
   width: 50px;
   height: 50px;
   border-radius: 50%;
   background: #f8f9fa;
-  position: relative;
-  text-align: center;
   color: #0d1e2d;
+  text-decoration: none;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Adds a soft shadow */
+  transition: all 0.3s ease;
 }
 
+/* Center the LinkedIn icon inside the circle */
 .social a span {
-  display: inline-block;
-  left: 50%;
-  position: absolute;
-  top: 50%;
-  transform: translate(-50%, -50%);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
 }
 
+/* Hover Effect */
 .social a:hover {
+  background: #0d1e2d;
+  color: #fff;
+}
+
+/* About Page*/
+img[src="assets/img/professionalPhoto copy.jpeg"] {
+  width: 300px; /* Set desired width */
+  height: auto; /* Maintain aspect ratio */
+}
+
+.custom-font { /*Font underneath the professional photo of me*/
+  font-size: 20px; 
+  font-weight: bold; 
+  color: #333; 
+}
+
+/* Button Container */
+.button-container {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+/* General Button Styling */
+.btn {
+  display: inline-block;
+  border: 0px solid #000;
+  padding: 10px 15px;
+  font-size: 12px;
+  text-transform: uppercase;
   color: #000;
+  transition: 0.3s all ease;
+  font-weight: 700;
+  border-radius: 0px;
+}
+
+/* Specific Button Styles */
+.email-btn { background-color: #020202; color: white; }
+.linkedin-btn { background-color: #000000; color: white; }
+.resume-btn { background-color: #000000; color: white; }
+
+/* Hover Effect - Shimmer */
+@keyframes shimmer {
+  0% { background-position: -100px; }
+  100% { background-position: 100px; }
+}
+
+.btn:hover {
+  background-image: linear-gradient(120deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.5) 50%, rgba(255,255,255,0.2) 100%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite linear;
+  transform: scale(1.05);
+}
+
+/* Email Dropdown - Initially Hidden */
+.email-dropdown {
+  display: none;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+  background-color: #f8f9fa;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 5px;
+  width: fit-content;
+  margin-top: 5px;
+}
+
+/* Active Class - Slide Down Effect */
+.email-dropdown.active {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
 }
