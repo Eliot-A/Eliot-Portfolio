@@ -107,7 +107,30 @@
       easing: 'ease-in-out',
       once: true,
       mirror: false
+
+
     })
   });
+/**
+ * Email Dropdown Toggle
+ */
+const emailButton = select('.email-btn');
+const emailBox = select('#email-box');
+
+if (emailButton) {
+  emailButton.addEventListener('click', function () {
+    if (emailBox.classList.contains('active')) {
+      emailBox.classList.remove('active');
+      setTimeout(() => {
+        emailBox.style.display = "none"; // Hides it after animation
+      }, 300); // Matches transition time
+    } else {
+      emailBox.style.display = "block";
+      setTimeout(() => {
+        emailBox.classList.add('active');
+      }, 10); // Small delay for animation
+    }
+  });
+}
 
 })()
